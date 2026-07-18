@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;        /* Pure White */
+    --foreground: 0 0% 0%;          /* Pitch Black */
+
+    --muted: 0 0% 95%;              /* Light Gray */
+    --muted-foreground: 0 0% 35%;   /* Medium Gray text */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;              /* White Card */
+    --card-foreground: 0 0% 0%;
+
+    --border: 0 0% 0%;              /* Black Wireframe Border */
+    --input: 0 0% 94%;
+
+    --primary: 0 0% 0%;             /* Pitch Black Primary Button */
+    --primary-foreground: 0 0% 100%;/* Pure White Text on Black */
+
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 100% 45%;     /* Vibrant Cyberpunk Red for Errors */
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 0 0% 0%;
+
+    --radius: 0rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;          /* Pure OLED Pitch Black */
+    --foreground: 0 0% 100%;        /* Stark White Text */
+
+    --muted: 0 0% 8%;               /* Dark Gray */
+    --muted-foreground: 0 0% 60%;   /* Light Gray text */
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --card: 0 0% 2%;                /* Black Card */
+    --card-foreground: 0 0% 100%;
+
+    --border: 0 0% 100%;            /* White Wireframe Border */
+    --input: 0 0% 10%;
+
+    --primary: 0 0% 100%;           /* White Primary Button */
+    --primary-foreground: 0 0% 0%;  /* Black Text on White */
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 0 0% 18%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 55%;     /* Neon Cyberpunk Red for Errors */
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-mono uppercase tracking-wide;
+    font-feature-settings: "zero" 1;
+  }
+}
+
+/* Cyberpunk Grid Background */
+.bg-portal-gradient {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-portal-gradient {
+  background-color: #000000;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Cyberpunk 2077 Chamfered Box Wrappers (Bottom-Right Cut) */
+.cp2077-wrapper,
+.cp2077-card-wrapper {
+  position: relative;
+  background-color: hsl(var(--foreground));
+  padding: 2px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 14px), 
+    calc(100% - 14px) 100%, 
+    0 100%
+  );
+}
+
+.cp2077-inner,
+.cp2077-card-inner {
+  position: relative;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 12px), 
+    calc(100% - 12px) 100%, 
+    0 100%
+  );
+}
+
+.cp2077-btn-wrapper {
+  position: relative;
+  background-color: hsl(var(--foreground));
+  padding: 2px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 10px), 
+    calc(100% - 10px) 100%, 
+    0 100%
+  );
+}
+
+.cp2077-btn-inner {
+  position: relative;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 8px), 
+    calc(100% - 8px) 100%, 
+    0 100%
+  );
+}
+
+.cp2077-sm-wrapper {
+  position: relative;
+  background-color: hsl(var(--foreground));
+  padding: 2px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 8px), 
+    calc(100% - 8px) 100%, 
+    0 100%
+  );
+}
+
+.cp2077-sm-inner {
+  position: relative;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 6px), 
+    calc(100% - 6px) 100%, 
+    0 100%
+  );
+}
+
+/* Cyberpunk 2077 Diagonal Zebra Hatch Texture for Sub-Boxes */
+.cp2077-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 5px
+  );
+  opacity: 0.85;
+}
+
+/* Scanlines overlay */
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Blinking terminal cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* Monospace Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--foreground);
+}

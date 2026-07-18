@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLACKWALL//GHOST - Captive Portal</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-background text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground font-sans">
+    <div id="root"></div>
+
+    <!-- Hidden fallback form for legacy non-JS OPNsense form submission -->
+    <noscript>
+      <div style="padding: 2rem; max-width: 480px; margin: 2rem auto; font-family: sans-serif; background: #18181b; color: #f4f4f5; border-radius: 12px; border: 1px solid #27272a;">
+        <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">JavaScript Disabled</h2>
+        <p style="margin-bottom: 1rem; color: #a1a1aa; font-size: 0.9rem;">Please enable JavaScript for the complete interactive authentication portal, or submit your login credentials below:</p>
+        <form method="post" action="$PORTAL_ACTION$">
+          <input type="hidden" name="redirurl" value="$PORTAL_REDIRURL$" />
+          <input type="hidden" name="zone" value="$PORTAL_ZONE$" />
+          <div style="margin-bottom: 0.75rem;">
+            <label style="display: block; font-size: 0.85rem; margin-bottom: 0.25rem;">Username / Voucher</label>
+            <input type="text" name="auth_user" required style="width: 100%; padding: 0.5rem; background: #09090b; border: 1px solid #3f3f46; color: white; border-radius: 6px;" />
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; margin-bottom: 0.25rem;">Password</label>
+            <input type="password" name="auth_pass" style="width: 100%; padding: 0.5rem; background: #09090b; border: 1px solid #3f3f46; color: white; border-radius: 6px;" />
+          </div>
+          <button type="submit" name="accept" value="Connect" style="width: 100%; padding: 0.6rem; background: #2563eb; color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;">Connect to Network</button>
+        </form>
+      </div>
+    </noscript>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
